@@ -1,5 +1,8 @@
 # E-Shelter_ObjectCount
- Detects and counts Object in Images. Running OpenCV on Jupyter Nodebook
+ Detects and counts Object in Images. Running Python3 and OpenCV on Jupyter Nodebook
+ This is no Yolo or object models based solution.  Im using matchTemplate from Open-CV. 
+
+![grafik](https://user-images.githubusercontent.com/12233951/139502750-384c77c2-411f-4e08-862a-5d3da3408d10.png)
 
 ## Features
 
@@ -49,7 +52,10 @@ pipenv install jupyterlab
 pipenv shell
 jupyter lab
 ```
+# More Infos about
 
+- https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html
+- 
 
 
 ## ToDo:
