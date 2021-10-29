@@ -2,6 +2,9 @@
  Detects and counts Object in Images. Running Python3 and OpenCV on Jupyter Nodebook
  This is no Yolo or object models based solution.  Im using matchTemplate from Open-CV. 
 
+![grafik](https://user-images.githubusercontent.com/12233951/139503590-181669ac-5071-46e0-b2b8-8b23e4d56f2b.png)
+
+
 ![grafik](https://user-images.githubusercontent.com/12233951/139502750-384c77c2-411f-4e08-862a-5d3da3408d10.png)
 
 ## Features
