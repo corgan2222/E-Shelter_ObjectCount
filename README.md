@@ -1,6 +1,12 @@
 # E-Shelter_ObjectCount
  Detects and counts Object in Images. Running Python3 and OpenCV on Jupyter Nodebook
- This is no Yolo or object models based solution.  Im using matchTemplate from Open-CV. 
+ This is no Yolo or object models based solution.  
+ Im using matchTemplate from Open-CV. 
+
+## Why
+
+- sometime you have to count hundrets of objects like in PDF CAD Files where you dont have access to the original files from the architect.
+- You need y,x Coordinates of Objects in an Image
 
 ![grafik](https://user-images.githubusercontent.com/12233951/139503590-181669ac-5071-46e0-b2b8-8b23e4d56f2b.png)
 
@@ -55,6 +61,9 @@ pipenv install jupyterlab
 pipenv shell
 jupyter lab
 ```
+
+then open the Jupyter URL in the Browser. Typically http://localhost:8888/lab?
+
 # More Infos about
 
 - https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html
@@ -74,4 +83,4 @@ jupyter lab
 - Jupyter
 - OpenCV
 - https://github.com/ClarityCoders 
-- https://github.com/starcraft04/swauto 
+- https://github.com/starcraft04/swauto ! Most of the code to prevent OpenCV from double counting. Thanks a lot! 
