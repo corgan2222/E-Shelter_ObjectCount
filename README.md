@@ -2,6 +2,9 @@
  Detects and counts Object in Images. Running Python3 and OpenCV on Jupyter Nodebook
  This is no Yolo or object models based solution.  
  Im using matchTemplate from Open-CV. 
+ 
+ ![grafik](https://user-images.githubusercontent.com/12233951/139504264-8e635343-ed51-4efa-886c-429fc446c862.png)
+ 
 
 ## Why
 
@@ -47,7 +50,7 @@ Windows User:
 - Login via SSH to your local WSL Instance
 
 ```shell
-# git clone https://github.com/corgan2222/E-Shelter_ObjectCount.git
+git clone https://github.com/corgan2222/E-Shelter_ObjectCount.git
 cd E-Shelter_ObjectCount
 chmod +x install.sh
 ./install.sh
@@ -64,10 +67,18 @@ jupyter lab
 
 then open the Jupyter URL in the Browser. Typically http://localhost:8888/lab?
 
+## Settings
+
+There are some setting you can adjust
+
+- toggle Debug Information
+- Adjust the Threshold for detection
+
+
 # More Infos about
 
 - https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html
-- 
+
 
 
 ## ToDo:
