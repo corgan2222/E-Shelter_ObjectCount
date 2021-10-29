@@ -1,7 +1,7 @@
 # E-Shelter_ObjectCount
  Detects and counts Object in Images. Running Python3 and OpenCV on Jupyter Nodebook
  This is no Yolo or object models based solution.  
- Im using matchTemplate from Open-CV. 
+ Im using matchTemplate from Open-CV on static images. 
  
  ![grafik](https://user-images.githubusercontent.com/12233951/139504264-8e635343-ed51-4efa-886c-429fc446c862.png)
  
@@ -34,6 +34,14 @@
     \ output_csv     -   Log Folder for txt,json and csv files<br>
    
 ## Informations
+
+### Workflow:
+- Prepare your Haystack Image. Transparent Images are not working. Put it in the stacks Folder.
+- Some Autocad Export PDFs are transparent. Add a white Background.
+- Create a needle Image what you are looking for. The needle Image must have to same size as the objects you are looking for in the image. Copy it in the Needle Folder and rename it to needle_4k.png
+
+Should look like this for the expample shown here:  ![grafik](https://github.com/corgan2222/E-Shelter_ObjectCount/blob/main/Jupyter/data/needle/needle_4k.png)
+
 
 Haystack Images should be larger then the needle Images. I used around 4k resolution.
 Put as many images as you like in the stacks Folder.
