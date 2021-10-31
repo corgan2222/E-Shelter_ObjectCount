@@ -256,28 +256,10 @@ def main(args):
     cwd = os.getcwd()
     global stacks_path, needle_path, output_path, csv_path 
 
-    # if len(args.stacksfolder) > 0:
-    #     stacks_path = args.stacksfolder
-    # else:
-    #     stacks_path = os.path.join(cwd, 'data','stacks')
-
-    # if len(args.outputfolder) > 0:
-    #     output_path = args.outputfolder
-    # else:
-    #     output_path = os.path.join(cwd, 'data','output')
-
-    # if len(args.csvfolder) > 0:
-    #     csv_path = args.csvfolder
-    # else:
-    #     csv_path = os.path.join(cwd, 'data','output_csv')
-
     stacks_path = export.checkInputFolderPath(args.stacksfolder, "stacks")
     output_path = export.checkInputFolderPath(args.stacksfolder, "output")
     csv_path = export.checkInputFolderPath(args.stacksfolder, "output_csv")
-
     needle_path = os.path.join(cwd, 'data','needle')      
-    # export.checkFolder(output_path)
-    # export.checkFolder(csv_path)
 
     log.debug("stacks: " + str(stacks_path))    
     log.debug("needle: " + str(needle_path))    
