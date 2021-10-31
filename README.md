@@ -28,6 +28,8 @@
 - Draw a rectangle and number on the object and save the image
 - export the x,y coordinates to json, csv and text
 - mass import for as many "haystack" images as you like
+- Cross platform [Win,Linux] (no Idea about Mac)
+- Windows executable
 
 <br>
 
