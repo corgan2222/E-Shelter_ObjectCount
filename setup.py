@@ -9,7 +9,7 @@ with open('LICENSE') as f:
 
 setup(
     name='ObjectCounter',
-    version='0.1.0',
+    version='0.2.0',
     description='Count Objects in Images',
     long_description=readme,
     author='Stefan Knaak',

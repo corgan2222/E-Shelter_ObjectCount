@@ -105,3 +105,15 @@ def dictStringToInt(d):
         except ValueError:
             d[key] = str(value)
     return d
+
+# def getRange(sx,sy, range):
+#     start_x = sx - range
+#     end_x = sx + range
+
+#     start_y = sx - range
+#     end_y = sx + range
+
+def my_range(start, end, step):
+    while start <= end:
+        yield start
+        start += step

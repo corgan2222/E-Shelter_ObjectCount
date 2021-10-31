@@ -64,6 +64,9 @@ def findPicture(screenshot,template, tolerance, multiple = False ):
     h = template.shape[0]
     w = template.shape[1]
 
+    log.info("Screenshot size: " + str(screenshot.shape[0]) + " x " + str(screenshot.shape[0]))
+    log.info("template size: " + str(template.shape[0]) + " x " + str(template.shape[0]))
+
     #We will now extract the alpha channel
     tmpl = util.extractAlpha(template)
     #print('alpha')
@@ -89,7 +92,7 @@ def findPicture(screenshot,template, tolerance, multiple = False ):
         top_left = max_loc
         best_val = max_val
     #We need to ensure we found at least one match otherwise we return false    
-    #print('*best_val; ' + str(best_val) + " , tolerance:" + str(tolerance))   
+    #log.debug(('*best_val; ' + str(best_val) + " , tolerance:" + str(tolerance)))   
 
     if best_val >= tolerance:
         if multiple:
@@ -98,9 +101,9 @@ def findPicture(screenshot,template, tolerance, multiple = False ):
         else:
             all_matches = util.getCoordinates(top_left, w, h, best_val)
         
-        # log.debug('The points found will be:')
-        # log.debug(all_matches)
-        # log.debug('*************End of checkPicture')
+        log.debug('The points found will be:')
+        log.debug(all_matches)
+        log.debug('*************End of checkPicture')
             #return {'res': True,'best_val':best_val,'points':all_matches}                    
         return all_matches
     else:
@@ -138,10 +141,15 @@ def runCounter(stackFile, needleFile, treshhold, output_path=""):
     #find matches
     matches = findPicture(img_rgb, template, treshhold, multiple = True)   
     
+    #save to text    
+    txt_output_path = os.path.join(csv_path,stack_file_name + '.txt')
+    log.debug('Save Txt File to: ' + str(txt_output_path))
+    export.saveTextFile(matches, txt_output_path)   
+
     count=0
     rows = []
     json_data = {'objects': [{'a':'1'}]}
-    
+
     #main loop, itterates through each coordinate found   
     for resultp in matches:
         count +=1 
@@ -150,28 +158,27 @@ def runCounter(stackFile, needleFile, treshhold, output_path=""):
         cv2.rectangle(img_rgb, resultp['top_left'], resultp['bottom_right'], (0,0,255), 2)   
         
         #add counter text on stack image
-        cv2.putText(img_rgb, str(count), (resultp['top_left'][0] ,resultp['top_left'][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,0,0), 1)  
-        
+        cv2.putText(img_rgb, str(count), (resultp['top_left'][0] - 10, resultp['top_left'][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,0,0), 1)          
+        cv2.putText(img_rgb, "[" + str(resultp['top_left'][0]) + "," + str(resultp['top_left'][1]) + "]", (resultp['top_left'][0] - 10, resultp['top_left'][1] + template.shape[1] + 20 ), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1)          
         #log.debug(str(count) + ": " + str(resultp['top_left']))  
             
         #formating for csv   
-        row = [count, resultp['top_left'][0], resultp['top_left'][1], resultp['bottom_right'][0], resultp['bottom_right'][1], resultp['center'][0], resultp['center'][1], resultp['tolerance'] ]        
+        row = [count, int(resultp['top_left'][0]), int(resultp['top_left'][1]), int(resultp['bottom_right'][0]), int(resultp['bottom_right'][1]), int(resultp['center'][0]), int(resultp['center'][1]), round(resultp['tolerance'],2) ]                
         rows.append(row)
 
         #formating for json
         json_data['objects'].append( { "objectID": count , "top_left": [int(resultp['top_left'][0]),int(resultp['top_left'][1])], "bottom_right":[int(resultp['bottom_right'][0]),int(resultp['bottom_right'][1])], "center":[int(resultp['center'][0]),int(resultp['center'][1])], "tolerance": json.dumps(float(resultp['tolerance'])) } ) 
-        
-        
-    #save to text    
-    txt_output_path = os.path.join(csv_path,stack_file_name + '.txt')
-    export.saveTextFile(matches, txt_output_path)   
-
+     
+                        
     #save to csv
     csv_output_path = os.path.join(csv_path,stack_file_name + '.csv')
+    log.debug('Save CSV File to: ' + str(csv_output_path))
+    log.debug(rows)
     export.saveCSV(rows, csv_output_path)
 
     #save json
     json_output_path = os.path.join(csv_path,stack_file_name + '.json')
+    log.debug('Save Json File to: ' + str(json_output_path))
     export.saveJson(json_data, json_output_path)
     
     #get x,y coordinates from stack image to print the counter text
@@ -185,7 +192,8 @@ def runCounter(stackFile, needleFile, treshhold, output_path=""):
 
     #cv2.imshow(stackFile + '_counter_.png', img_rgb) #chrashed jupytier if count>1
     log.info("[bold green blink]- Finished! Found " + str(count) + " [/]", extra={"markup": True})
-             
+
+
 
 def allImagesMode(arg_tolerance):
     #Reads all images from Stack Folder                 
@@ -196,7 +204,7 @@ def allImagesMode(arg_tolerance):
             #[path,needle,treshhold,debug]
             runCounter(os.path.join(stacks_path,filename),os.path.join(needle_path,'needle.png'),arg_tolerance,output_path)
         else:
-            log.error("No Files found in:" + output_path)
+            log.info("Finished. No more Files found in:" + output_path)
             continue  
 
 def is_valid_file(parser, arg):
