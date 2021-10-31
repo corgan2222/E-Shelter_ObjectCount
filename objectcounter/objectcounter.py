@@ -176,7 +176,7 @@ def runCounter(stackFile, needleFile, treshhold, output_path=""):
     
     #get x,y coordinates from stack image to print the counter text
     hi, wi, ci = img_rgb.shape   
-    cv2.putText(img_rgb, "Count:" + str(count), (100, hi - 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,0), 3)    
+    cv2.putText(img_rgb, "Count:" + str(count), (100, hi - 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,0), 3)     
 
     #save processed images 
     output_path = os.path.join(output_path,stack_file_name + '_counter_.png')
@@ -251,7 +251,8 @@ def setLogging(args):
 def main(args):
 
     setLogging(args)
-
+    log.info("[bold purple]Object Counter © Stefan Knaak - E-Shelter Security.  [/]", extra={"markup": True}) 
+    
     #Folders
     cwd = os.getcwd()
     global stacks_path, needle_path, output_path, csv_path 
@@ -300,9 +301,20 @@ def main(args):
     
     
               
-if __name__ == "__main__":
+if __name__ == "__main__":    
     args = get_parser().parse_args()
-    main(args)
+    try:
+        main(args)
+    except BaseException:
+        import sys
+        print(sys.exc_info()[0])
+        import traceback
+        print(traceback.format_exc())
+    finally:
+        print("Press Enter to continue ...")
+        input()
+
+    
 
 
 
