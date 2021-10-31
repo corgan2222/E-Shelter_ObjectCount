@@ -59,7 +59,13 @@ Look at the demo Image for an example.
 If something goes wrong, set __DEBUG = True
 <br>
 
-# Installation Linux
+# Windows executable
+
+- Download latest Release Version from https://github.com/corgan2222/E-Shelter_ObjectCount/releases/ 
+- Extract Zip File
+- Start exe
+
+# Source Installation Linux
 
 ```shell
 git clone https://github.com/corgan2222/E-Shelter_ObjectCount.git
@@ -69,7 +75,7 @@ python3 -m pip install -r requirements.txt
 ```
 <br>
 
-# Installation Windows 
+# Source Installation Windows 
 
 - Install WSL2 (Windows Subsystem for Linux)
 - Install a Linux Distro like Ubuntu
