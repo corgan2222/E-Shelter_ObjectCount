@@ -6,14 +6,20 @@
 
  ![grafik](https://user-images.githubusercontent.com/12233951/139504264-8e635343-ed51-4efa-886c-429fc446c862.png)
 
+<br>
+
 ## Why
 
 - sometime you have to count hundrets of objects like in PDF CAD Files where you dont have access to the original files from the architect.
 - You need y,x Coordinates of Objects in an Image
 
+<br>
+
 ![grafik](https://user-images.githubusercontent.com/12233951/139503590-181669ac-5071-46e0-b2b8-8b23e4d56f2b.png)
 
 ![grafik](https://user-images.githubusercontent.com/12233951/139502750-384c77c2-411f-4e08-862a-5d3da3408d10.png)
+
+<br>
 
 ## Features
 
@@ -23,6 +29,8 @@
 - export the x,y coordinates to json, csv and text
 - mass import for as many "haystack" images as you like
 
+<br>
+
 ## Folder Structure
 
 - Data<br>
@@ -30,6 +38,8 @@
     \ needle         -   The "Needle" we want to find in the Haystack<br>
     \ output         -   Storage Folder for the processed Images<br>
     \ output_csv     -   Log Folder for txt,json and csv files<br>
+
+<br>
 
 ## Informations
 
@@ -48,7 +58,6 @@ Importand is, that the needle Image has to be in the same size because the scrip
 Look at the demo Image for an example.
 If something goes wrong, set __DEBUG = True
 <br>
-<br>
 
 # Installation Linux
 
@@ -59,8 +68,6 @@ cd E-Shelter_ObjectCount/objectcounter
 python3 -m pip install -r requirements.txt 
 ```
 <br>
-<br>
-
 
 # Installation Windows 
 
